@@ -57,12 +57,12 @@ module HashDiff
     parts = path.split(delimiter).collect do |part|
       if part =~ /^(.*)\[(\d+)\]$/
         if $1.size > 0
-          [$1, $2.to_i]
+          [import_key($1), $2.to_i]
         else
           $2.to_i
         end
       else
-        part
+        import_key(part)
       end
     end
 
@@ -126,6 +126,22 @@ module HashDiff
       elsif res == true
         return []
       end
+    end
+  end
+
+  def self.export_key(key)
+    if key.class == Symbol
+      ":#{key}"
+    else
+      key
+    end
+  end
+
+  def self.import_key(key)
+    if key[0] == ":"
+      key[1..-1].to_sym
+    else
+      key
     end
   end
 end

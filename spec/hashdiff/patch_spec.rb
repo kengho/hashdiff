@@ -145,4 +145,10 @@ describe HashDiff do
     HashDiff.unpatch!(b, diff).should == a
   end
 
+  it "should patch hashes with symbols correctly" do
+    a = {a: 3}
+    b = {a: {a1: 1, a2: 2}}
+    diff = HashDiff.diff(a, b)
+    HashDiff.patch!(a, diff).should == b
+  end
 end

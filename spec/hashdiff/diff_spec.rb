@@ -143,6 +143,12 @@ describe HashDiff do
     diff.should == [["-", "[0]\td", 4], ["-", "[1]", {"x"=>5, "y"=>6, "z"=>3}]]
   end
 
+  it "should transform symbols to string correctly" do
+    diff = HashDiff.diff({ 'a' => { x: 2, y: 3, z: 4 }, 'b' => { x: 3, z: [1, 2, 3] } },
+                         { 'a' => { y: 3 }, 'b' => { y: 3, z: [2, 3, 4] } })
+    diff.should == [['-', 'a.:x', 2], ['-', 'a.:z', 4], ['-', 'b.:x', 3], ["-", "b.:z[0]", 1], ["+", "b.:z[2]", 4], ['+', 'b.:y', 3]]
+  end
+
   context 'when :numeric_tolerance requested' do
     it "should be able to diff changes in hash value" do
       a = {'a' => 0.558, 'b' => 0.0, 'c' => 0.65, 'd' => 'fin'}

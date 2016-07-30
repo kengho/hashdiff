@@ -128,27 +128,27 @@ module HashDiff
 
       # add deleted properties
       deleted_keys.sort.each do |k|
-        custom_result = custom_compare(opts[:comparison], "#{prefix}#{k}", obj1[k], nil)
+        custom_result = custom_compare(opts[:comparison], "#{prefix}#{export_key(k)}", obj1[k], nil)
 
         if custom_result
           result.concat(custom_result)
         else
-          result << ['-', "#{prefix}#{k}", obj1[k]]
+          result << ['-', "#{prefix}#{export_key(k)}", obj1[k]]
         end
       end
 
       # recursive comparison for common keys
-      common_keys.sort.each {|k| result.concat(diff(obj1[k], obj2[k], opts.merge(:prefix => "#{prefix}#{k}"))) }
+      common_keys.sort.each {|k| result.concat(diff(obj1[k], obj2[k], opts.merge(:prefix => "#{prefix}#{export_key(k)}"))) }
 
       # added properties
       added_keys.sort.each do |k|
         unless obj1.key?(k)
-          custom_result = custom_compare(opts[:comparison], "#{prefix}#{k}", nil, obj2[k])
+          custom_result = custom_compare(opts[:comparison], "#{prefix}#{export_key(k)}", nil, obj2[k])
 
           if custom_result
             result.concat(custom_result)
           else
-            result << ['+', "#{prefix}#{k}", obj2[k]]
+            result << ['+', "#{prefix}#{export_key(k)}", obj2[k]]
           end
         end
       end
