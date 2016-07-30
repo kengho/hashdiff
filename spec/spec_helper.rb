@@ -4,7 +4,7 @@ require 'rubygems'
 require 'rspec'
 require 'rspec/autorun'
 
-require 'hashdiff'
+require 'hashdiff_sym'
 
 RSpec.configure do |config|
   config.mock_framework = :rspec

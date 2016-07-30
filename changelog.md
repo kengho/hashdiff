@@ -32,7 +32,7 @@
 ## v0.0.5 2012-7-1
 
 * fix a bug in judging whehter two objects are similiar.
-* add more spec test for HashDiff.best_diff
+* add more spec test for HashDiffSym.best_diff
 
 ## v0.0.4 2012-6-24
 

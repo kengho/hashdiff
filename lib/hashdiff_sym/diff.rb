@@ -1,8 +1,8 @@
-module HashDiff
+module HashDiffSym
 
   # Best diff two objects, which tries to generate the smallest change set using different similarity values.
   #
-  # HashDiff.best_diff is useful in case of comparing two objects which include similar hashes in arrays.
+  # HashDiffSym.best_diff is useful in case of comparing two objects which include similar hashes in arrays.
   #
   # @param [Array, Hash] obj1
   # @param [Array, Hash] obj2
@@ -20,7 +20,7 @@ module HashDiff
   # @example
   #   a = {'x' => [{'a' => 1, 'c' => 3, 'e' => 5}, {'y' => 3}]}
   #   b = {'x' => [{'a' => 1, 'b' => 2, 'e' => 5}] }
-  #   diff = HashDiff.best_diff(a, b)
+  #   diff = HashDiffSym.best_diff(a, b)
   #   diff.should == [['-', 'x[0].c', 3], ['+', 'x[0].b', 2], ['-', 'x[1].y', 3], ['-', 'x[1]', {}]]
   #
   # @since 0.0.1
@@ -63,7 +63,7 @@ module HashDiff
   #   a = {"a" => 1, "b" => {"b1" => 1, "b2" =>2}}
   #   b = {"a" => 1, "b" => {}}
   #
-  #   diff = HashDiff.diff(a, b)
+  #   diff = HashDiffSym.diff(a, b)
   #   diff.should == [['-', 'b.b1', 1], ['-', 'b.b2', 2]]
   #
   # @since 0.0.1

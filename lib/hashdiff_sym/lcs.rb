@@ -1,4 +1,4 @@
-module HashDiff
+module HashDiffSym
   # @private
   #
   # caculate array difference using LCS algorithm

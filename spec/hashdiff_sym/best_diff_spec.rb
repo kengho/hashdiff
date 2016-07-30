@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe HashDiff do
+describe HashDiffSym do
   it "should be able to best diff" do
     a = {'x' => [{'a' => 1, 'c' => 3, 'e' => 5}, {'y' => 3}]}
     b = {'x' => [{'a' => 1, 'b' => 2, 'e' => 5}] }
 
-    diff = HashDiff.best_diff(a, b)
+    diff = HashDiffSym.best_diff(a, b)
     diff.should == [["-", "x[0].c", 3], ["+", "x[0].b", 2], ["-", "x[1]", {"y"=>3}]]
   end
 
@@ -13,7 +13,7 @@ describe HashDiff do
     a = {'x' => [{'a' => 1, 'c' => 3, 'e' => 5}, {'y' => 3}]}
     b = {'x' => [{'a' => 1, 'b' => 2, 'e' => 5}] }
 
-    diff = HashDiff.best_diff(a, b, :delimiter => "\t")
+    diff = HashDiffSym.best_diff(a, b, :delimiter => "\t")
     diff.should == [["-", "x[0]\tc", 3], ["+", "x[0]\tb", 2], ["-", "x[1]", {"y"=>3}]]
   end
 
@@ -21,7 +21,7 @@ describe HashDiff do
     a = {'x' => [{'a' => 'foo', 'c' => 'goat', 'e' => 'snake'}, {'y' => 'baz'}]}
     b = {'x' => [{'a' => 'bar', 'b' => 'cow', 'e' => 'puppy'}] }
 
-    diff = HashDiff.best_diff(a, b) do |path, obj1, obj2|
+    diff = HashDiffSym.best_diff(a, b) do |path, obj1, obj2|
       case path
       when /^x\[.\]\..$/
         obj1.length == obj2.length if obj1 and obj2
@@ -55,7 +55,7 @@ describe HashDiff do
       }
     }}
 
-    diff = HashDiff.best_diff(a, b)
+    diff = HashDiffSym.best_diff(a, b)
     diff.should == [
       ['~', 'menu.id', 'file', 'file 2'],
       ['~', 'menu.popup.menuitem[0].value', 'New', 'New1'],

@@ -1,7 +1,7 @@
 # 
 # This module provides methods to diff two hash, patch and unpatch hash
 #
-module HashDiff
+module HashDiffSym
 
   # Apply patch to object
   #

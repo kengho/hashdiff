@@ -1,0 +1,5 @@
+require 'hashdiff_sym/util'
+require 'hashdiff_sym/lcs'
+require 'hashdiff_sym/diff'
+require 'hashdiff_sym/patch'
+require 'hashdiff_sym/version'
