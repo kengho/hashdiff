@@ -1,6 +1,6 @@
 ## Summary
 
-HashDiffSym is fork of [HashDiff](https://github.com/liufengyun/hashdiff) (by [liufengyun](https://github.com/liufengyun)) with symbols support.
+HashDiffSym is a fork of [HashDiff](https://github.com/liufengyun/hashdiff) (by [liufengyun](https://github.com/liufengyun)) with symbols support.
 
 ```
 diff = HashDiffSym.diff({ 'a' => { x: 2, y: 3, z: 4 }, 'b' => { x: 3, z: [1, 2, 3] } },
