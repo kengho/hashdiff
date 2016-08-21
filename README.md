@@ -17,6 +17,16 @@ diff = HashDiffSym.diff(a, b)
 HashDiffSym.patch!(a, diff).should == b
 ```
 
+## Installing
+
+Add this to your Gemfile
+
+`gem "hashdiff_sym"`
+
+or just run
+
+`gem install hashdiff_sym`
+
 ## License
 
 HashDiffSym is distributed under the MIT-LICENSE.
