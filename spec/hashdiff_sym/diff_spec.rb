@@ -149,6 +149,11 @@ describe HashDiffSym do
     diff.should == [['-', 'a.:x', 2], ['-', 'a.:z', 4], ['-', 'b.:x', 3], ["-", "b.:z[0]", 1], ["+", "b.:z[2]", 4], ['+', 'b.:y', 3]]
   end
 
+  it "should compare hashes with both string and symbols keys" do
+    diff = HashDiffSym.diff({}, { :symbol_key => 1, "string_key" => 1})
+    diff.should == [["+", "string_key", 1], ["+", ":symbol_key", 1]]
+  end
+
   context 'when :numeric_tolerance requested' do
     it "should be able to diff changes in hash value" do
       a = {'a' => 0.558, 'b' => 0.0, 'c' => 0.65, 'd' => 'fin'}

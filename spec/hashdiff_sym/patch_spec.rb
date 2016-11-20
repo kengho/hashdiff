@@ -151,4 +151,11 @@ describe HashDiffSym do
     diff = HashDiffSym.diff(a, b)
     HashDiffSym.patch!(a, diff).should == b
   end
+
+  it "should patch hashes with both symbol and string keys correctly" do
+    a = {a: 3, "b" => 4}
+    b = {a: {a1: 1, a2: 2}, "b" => 5}
+    diff = HashDiffSym.diff(a, b)
+    HashDiffSym.patch!(a, diff).should == b
+  end
 end

@@ -145,3 +145,9 @@ module HashDiffSym
     end
   end
 end
+
+class Array
+  def to_s_sort
+    self.sort { |a, b| a.to_s <=> b.to_s }
+  end
+end
